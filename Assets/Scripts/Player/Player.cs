@@ -15,12 +15,16 @@ public class Player : MonoBehaviour
     public float forceJump = 2;
 
     [Header("Animation setup")]
-    public float jumpScaleY = 1.5f;
-    public float jumpScaleX = .7f;
-    public float landingScaleX = 1.5f;
-    public float landingScaleY = .7f;
+    public float jumpScaleY = .75f;
+    public float jumpScaleX = .35f;
+    public float landingScaleX = 0.75f;
+    public float landingScaleY = .35f;
     public float animationDuration = .3f;
     public Ease ease = Ease.OutBack;
+    public int numberOfLoops = 2;
+    public LoopType loopType = LoopType.Yoyo;
+
+
 
     private float _currentSpeed;
     private float _fallingThreshold = -5.0f;
@@ -38,33 +42,31 @@ public class Player : MonoBehaviour
 
     private void HandleMovement()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            _currentSpeed = speedRun;
-        }
-        else
-        {
-            _currentSpeed = speed;
-        }
+        CheckMovenmentSpeed();
+        SetMovementDirection();
+        AdjustFrictionForDeceleration();
 
+    }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            myRigidBody.velocity = new Vector2(-_currentSpeed, myRigidBody.velocity.y);
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            myRigidBody.velocity = new Vector2(_currentSpeed, myRigidBody.velocity.y);
-        }
-
+    private void AdjustFrictionForDeceleration()
+    {
         if (myRigidBody.velocity.x > 0)
-        {
             myRigidBody.velocity -= friction;
-        }
         else if (myRigidBody.velocity.x < 0)
-        {
             myRigidBody.velocity += friction;
-        }
+    }
+
+    private void SetMovementDirection()
+    {
+        if (Input.GetKey(KeyCode.LeftArrow))
+            myRigidBody.velocity = new Vector2(-_currentSpeed, myRigidBody.velocity.y);
+        else if (Input.GetKey(KeyCode.RightArrow))
+            myRigidBody.velocity = new Vector2(_currentSpeed, myRigidBody.velocity.y);
+    }
+
+    private void CheckMovenmentSpeed()
+    {
+        _currentSpeed = Input.GetKeyDown(KeyCode.LeftControl) ? speedRun : speed;
     }
 
     private void HandleJump()
@@ -72,39 +74,37 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             myRigidBody.velocity = Vector2.up * forceJump;
-            myRigidBody.transform.localScale = Vector2.one;
+            myRigidBody.transform.localScale = new Vector2(0.5f, 0.5f);
             DOTween.Kill(myRigidBody.transform);
             HandleScaleJump();
         }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground") && _isFalling)
+            HandleLanding();
+    }
+
 
     private void HandleScaleJump()
     {
-        myRigidBody.transform.DOScaleY(jumpScaleY, animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
-        myRigidBody.transform.DOScaleX(jumpScaleX, animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground") && _isFalling) {
-            HandleLanding();
-        }
+        HandleAnimation(jumpScaleX, jumpScaleY, animationDuration);
     }
 
     private void HandleLanding()
     {
-        myRigidBody.transform.DOScaleY(landingScaleY, animationDuration).SetLoops(2, LoopType.Yoyo);
-        myRigidBody.transform.DOScaleX(landingScaleX, animationDuration).SetLoops(2, LoopType.Yoyo);
+        HandleAnimation(landingScaleX, landingScaleY, animationDuration / 2);
     }
 
-    private void CheckIfIsFalling() {
-        Console.WriteLine($"{myRigidBody.velocity.y}");
-        if (myRigidBody.velocity.y < _fallingThreshold)
-        {
-            _isFalling = true;
-        }
-        else {
-            _isFalling = false;
-        }
+    private void HandleAnimation(float valueX, float valueY, float duration)
+    {
+        myRigidBody.transform.DOScaleY(valueY, duration).SetLoops(numberOfLoops, loopType);
+        myRigidBody.transform.DOScaleX(valueX, duration).SetLoops(numberOfLoops, loopType);
+    }
+
+
+    private void CheckIfIsFalling()
+    {
+        _isFalling = myRigidBody.velocity.y < _fallingThreshold;
     }
 }

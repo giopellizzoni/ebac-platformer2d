@@ -13,8 +13,6 @@ public class HealthBase : MonoBehaviour
     private bool _isDead;
 
 
-
-
     private void Awake()
     {
         Init();

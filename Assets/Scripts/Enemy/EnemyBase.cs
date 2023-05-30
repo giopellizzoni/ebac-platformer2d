@@ -16,7 +16,4 @@ public class EnemyBase : MonoBehaviour
             health.Damage(damage);
         }
     }
-
-
-
 }
