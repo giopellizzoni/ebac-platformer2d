@@ -24,11 +24,12 @@ public class Player : MonoBehaviour
     public int numberOfLoops = 2;
     public LoopType loopType = LoopType.Yoyo;
 
-
+    [Header("Animation Player")]
+    public string boolRun = "IsRunning";
+    public Animator animator;
 
     private float _currentSpeed;
     private float _fallingThreshold = -5.0f;
-    private bool _isRunning = false;
     private bool _isFalling = false;
 
 
@@ -59,14 +60,34 @@ public class Player : MonoBehaviour
     private void SetMovementDirection()
     {
         if (Input.GetKey(KeyCode.LeftArrow))
+        {
             myRigidBody.velocity = new Vector2(-_currentSpeed, myRigidBody.velocity.y);
+            FlipCharacter(-.5f, .1f);
+            animator.SetBool(boolRun, true);
+        }
         else if (Input.GetKey(KeyCode.RightArrow))
+        {
             myRigidBody.velocity = new Vector2(_currentSpeed, myRigidBody.velocity.y);
+            FlipCharacter(.5f, .1f);
+            animator.SetBool(boolRun, true);
+        }
+        else
+        {
+            animator.SetBool(boolRun, false);
+        }
     }
 
     private void CheckMovenmentSpeed()
     {
-        _currentSpeed = Input.GetKeyDown(KeyCode.LeftControl) ? speedRun : speed;
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            animator.speed = 2;
+            _currentSpeed = speedRun;
+        } else {
+            animator.speed = 1;
+            _currentSpeed = speed;
+        }
+         
     }
 
     private void HandleJump()
@@ -102,6 +123,13 @@ public class Player : MonoBehaviour
         myRigidBody.transform.DOScaleX(valueX, duration).SetLoops(numberOfLoops, loopType);
     }
 
+    private void FlipCharacter(float direction, float duration) 
+    {
+        if (myRigidBody.transform.localScale.x != direction)
+        {
+            myRigidBody.transform.DOScaleX(direction, duration);
+        }
+    }
 
     private void CheckIfIsFalling()
     {
