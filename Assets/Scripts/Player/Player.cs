@@ -4,6 +4,15 @@ using UnityEngine;
 using DG.Tweening;
 using System;
 
+
+public enum PlayerAnimationState
+{
+    Idle,
+    JumpUp,
+    JumpDown,
+    Landing
+}
+
 public class Player : MonoBehaviour
 {
     public Rigidbody2D myRigidBody;
@@ -97,30 +106,23 @@ public class Player : MonoBehaviour
             myRigidBody.velocity = Vector2.up * forceJump;
             myRigidBody.transform.localScale = new Vector2(0.5f, 0.5f);
             DOTween.Kill(myRigidBody.transform);
-            HandleScaleJump();
+            HandleAnimation(PlayerAnimationState.JumpUp);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground") && _isFalling)
-            HandleLanding();
+        {
+            HandleAnimation(PlayerAnimationState.Landing);
+            HandleAnimation(PlayerAnimationState.Idle);
+
+        }
     }
 
-
-    private void HandleScaleJump()
+    private void HandleAnimation(PlayerAnimationState animationState)
     {
-        HandleAnimation(jumpScaleX, jumpScaleY, animationDuration);
-    }
-
-    private void HandleLanding()
-    {
-        HandleAnimation(landingScaleX, landingScaleY, animationDuration / 2);
-    }
-
-    private void HandleAnimation(float valueX, float valueY, float duration)
-    {
-        myRigidBody.transform.DOScaleY(valueY, duration).SetLoops(numberOfLoops, loopType);
-        myRigidBody.transform.DOScaleX(valueX, duration).SetLoops(numberOfLoops, loopType);
+        var state = Enum.GetName(typeof(PlayerAnimationState), animationState);
+        animator.SetTrigger(state);
     }
 
     private void FlipCharacter(float direction, float duration) 
@@ -134,5 +136,9 @@ public class Player : MonoBehaviour
     private void CheckIfIsFalling()
     {
         _isFalling = myRigidBody.velocity.y < _fallingThreshold;
+        if (_isFalling)
+        {
+            HandleAnimation(PlayerAnimationState.JumpDown);
+        }
     }
 }
