@@ -4,6 +4,15 @@ using UnityEngine;
 using DG.Tweening;
 using System;
 
+
+public enum PlayerAnimationState
+{
+    Idle,
+    JumpUp,
+    JumpDown,
+    Landing
+}
+
 public class Player : MonoBehaviour
 {
     public Rigidbody2D myRigidBody;
@@ -24,11 +33,12 @@ public class Player : MonoBehaviour
     public int numberOfLoops = 2;
     public LoopType loopType = LoopType.Yoyo;
 
-
+    [Header("Animation Player")]
+    public string boolRun = "IsRunning";
+    public Animator animator;
 
     private float _currentSpeed;
     private float _fallingThreshold = -5.0f;
-    private bool _isRunning = false;
     private bool _isFalling = false;
 
 
@@ -59,14 +69,36 @@ public class Player : MonoBehaviour
     private void SetMovementDirection()
     {
         if (Input.GetKey(KeyCode.LeftArrow))
+        {
             myRigidBody.velocity = new Vector2(-_currentSpeed, myRigidBody.velocity.y);
+            FlipCharacter(-.5f, .1f);
+            animator.SetBool(boolRun, true);
+        }
         else if (Input.GetKey(KeyCode.RightArrow))
+        {
             myRigidBody.velocity = new Vector2(_currentSpeed, myRigidBody.velocity.y);
+            FlipCharacter(.5f, .1f);
+            animator.SetBool(boolRun, true);
+        }
+        else
+        {
+            animator.SetBool(boolRun, false);
+        }
     }
 
     private void CheckMovenmentSpeed()
     {
-        _currentSpeed = Input.GetKeyDown(KeyCode.LeftControl) ? speedRun : speed;
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            animator.speed = 2;
+            _currentSpeed = speedRun;
+        }
+        else
+        {
+            animator.speed = 1;
+            _currentSpeed = speed;
+        }
+
     }
 
     private void HandleJump()
@@ -74,37 +106,40 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             myRigidBody.velocity = Vector2.up * forceJump;
-            myRigidBody.transform.localScale = new Vector2(0.5f, 0.5f);
             DOTween.Kill(myRigidBody.transform);
-            HandleScaleJump();
+            HandleAnimation(PlayerAnimationState.JumpUp);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground") && _isFalling)
-            HandleLanding();
+        {
+            HandleAnimation(PlayerAnimationState.Landing);
+            HandleAnimation(PlayerAnimationState.Idle);
+        }
     }
 
-
-    private void HandleScaleJump()
+    private void HandleAnimation(PlayerAnimationState animationState)
     {
-        HandleAnimation(jumpScaleX, jumpScaleY, animationDuration);
+        var state = Enum.GetName(typeof(PlayerAnimationState), animationState);
+        animator.SetTrigger(state);
     }
 
-    private void HandleLanding()
+    private void FlipCharacter(float direction, float duration)
     {
-        HandleAnimation(landingScaleX, landingScaleY, animationDuration / 2);
+        if (myRigidBody.transform.localScale.x != direction)
+        {
+            myRigidBody.transform.DOScaleX(direction, duration);
+        }
     }
-
-    private void HandleAnimation(float valueX, float valueY, float duration)
-    {
-        myRigidBody.transform.DOScaleY(valueY, duration).SetLoops(numberOfLoops, loopType);
-        myRigidBody.transform.DOScaleX(valueX, duration).SetLoops(numberOfLoops, loopType);
-    }
-
 
     private void CheckIfIsFalling()
     {
         _isFalling = myRigidBody.velocity.y < _fallingThreshold;
+        
+        if (_isFalling)
+        {
+            HandleAnimation(PlayerAnimationState.JumpDown);
+        }
     }
 }
