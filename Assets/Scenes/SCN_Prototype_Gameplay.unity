@@ -1419,15 +1419,7 @@ MonoBehaviour:
   speed: 10
   speedRun: 20
   forceJump: 15
-  jumpScaleY: 0.5
-  jumpScaleX: 0.5
-  landingScaleX: 0.5
-  landingScaleY: 0.5
-  animationDuration: 0.1
-  ease: 27
-  numberOfLoops: 2
-  loopType: 1
-  boolRun: Run
+  boolRun: IsRunning
   animator: {fileID: 1108930810}
 --- !u!114 &1740070443
 MonoBehaviour:

@@ -7,9 +7,9 @@ using System;
 
 public enum PlayerAnimationState
 {
-    Idle,
     JumpUp,
     JumpDown,
+    IsRunning, 
     Landing
 }
 
@@ -23,18 +23,9 @@ public class Player : MonoBehaviour
     public float speedRun;
     public float forceJump = 2;
 
-    [Header("Animation setup")]
-    public float jumpScaleY = .75f;
-    public float jumpScaleX = .35f;
-    public float landingScaleX = 0.75f;
-    public float landingScaleY = .35f;
-    public float animationDuration = .3f;
-    public Ease ease = Ease.OutBack;
-    public int numberOfLoops = 2;
-    public LoopType loopType = LoopType.Yoyo;
-
     [Header("Animation Player")]
     public string boolRun = "IsRunning";
+
     public Animator animator;
 
     private float _currentSpeed;
@@ -44,11 +35,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HandleJump();
         HandleMovement();
+        HandleJump();
         CheckIfIsFalling();
     }
 
+    #region Movement
     private void HandleMovement()
     {
         CheckMovenmentSpeed();
@@ -71,17 +63,17 @@ public class Player : MonoBehaviour
         {
             myRigidBody.velocity = new Vector2(-_currentSpeed, myRigidBody.velocity.y);
             FlipCharacter(-.5f, .1f);
-            animator.SetBool(boolRun, true);
+            HandleAnimationBool(PlayerAnimationState.IsRunning, true);
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             myRigidBody.velocity = new Vector2(_currentSpeed, myRigidBody.velocity.y);
             FlipCharacter(.5f, .1f);
-            animator.SetBool(boolRun, true);
+            HandleAnimationBool(PlayerAnimationState.IsRunning, true);
         }
         else
         {
-            animator.SetBool(boolRun, false);
+            HandleAnimationBool(PlayerAnimationState.IsRunning, false);
         }
     }
 
@@ -100,30 +92,6 @@ public class Player : MonoBehaviour
 
     }
 
-    private void HandleJump()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            myRigidBody.velocity = Vector2.up * forceJump;
-
-            HandleAnimation(PlayerAnimationState.JumpUp);
-        }
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground") && _isFalling)
-        {
-            HandleAnimation(PlayerAnimationState.Landing);
-            HandleAnimation(PlayerAnimationState.Idle);
-        }
-    }
-
-    private void HandleAnimation(PlayerAnimationState animationState)
-    {
-        var state = Enum.GetName(typeof(PlayerAnimationState), animationState);
-        animator.SetTrigger(state);
-    }
-
     private void FlipCharacter(float direction, float duration)
     {
         if (myRigidBody.transform.localScale.x != direction)
@@ -131,18 +99,36 @@ public class Player : MonoBehaviour
             myRigidBody.transform.DOScaleX(direction, duration);
         }
     }
+    #endregion
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        HandleAnimationBool(PlayerAnimationState.JumpUp, false);
+    }
+
+    private void HandleJump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            myRigidBody.velocity = Vector2.up * forceJump;
+            HandleAnimationBool(PlayerAnimationState.JumpUp, true);
+        }
+    }
 
     private void CheckIfIsFalling()
     {
         _isFalling = myRigidBody.velocity.y < _fallingThreshold;
-
         if (_isFalling)
         {
-            HandleAnimation(PlayerAnimationState.JumpDown);
-        }
-        else 
-        {
-            HandleAnimation(PlayerAnimationState.Idle);
+            HandleAnimationBool(PlayerAnimationState.JumpUp, false);
         }
     }
+
+    private void HandleAnimationBool(PlayerAnimationState state, bool flag)
+    {
+        animator.SetBool(state.ToString(), flag);
+    }
+
+
 }
