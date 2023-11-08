@@ -41,7 +41,6 @@ public class Player : MonoBehaviour
     private float _fallingThreshold = -5.0f;
     private bool _isFalling = false;
 
-
     // Update is called once per frame
     void Update()
     {
@@ -106,7 +105,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             myRigidBody.velocity = Vector2.up * forceJump;
-            DOTween.Kill(myRigidBody.transform);
+
             HandleAnimation(PlayerAnimationState.JumpUp);
         }
     }
@@ -136,10 +135,14 @@ public class Player : MonoBehaviour
     private void CheckIfIsFalling()
     {
         _isFalling = myRigidBody.velocity.y < _fallingThreshold;
-        
+
         if (_isFalling)
         {
             HandleAnimation(PlayerAnimationState.JumpDown);
+        }
+        else 
+        {
+            HandleAnimation(PlayerAnimationState.Idle);
         }
     }
 }
