@@ -4,6 +4,15 @@ using UnityEngine;
 using DG.Tweening;
 using System;
 
+
+public enum PlayerAnimationState
+{
+    JumpUp,
+    JumpDown,
+    IsRunning, 
+    Landing
+}
+
 public class Player : MonoBehaviour
 {
     public Rigidbody2D myRigidBody;
@@ -14,32 +23,24 @@ public class Player : MonoBehaviour
     public float speedRun;
     public float forceJump = 2;
 
-    [Header("Animation setup")]
-    public float jumpScaleY = .75f;
-    public float jumpScaleX = .35f;
-    public float landingScaleX = 0.75f;
-    public float landingScaleY = .35f;
-    public float animationDuration = .3f;
-    public Ease ease = Ease.OutBack;
-    public int numberOfLoops = 2;
-    public LoopType loopType = LoopType.Yoyo;
+    [Header("Animation Player")]
+    public string boolRun = "IsRunning";
 
-
+    public Animator animator;
 
     private float _currentSpeed;
     private float _fallingThreshold = -5.0f;
-    private bool _isRunning = false;
     private bool _isFalling = false;
-
 
     // Update is called once per frame
     void Update()
     {
-        HandleJump();
         HandleMovement();
+        HandleJump();
         CheckIfIsFalling();
     }
 
+    #region Movement
     private void HandleMovement()
     {
         CheckMovenmentSpeed();
@@ -59,14 +60,51 @@ public class Player : MonoBehaviour
     private void SetMovementDirection()
     {
         if (Input.GetKey(KeyCode.LeftArrow))
+        {
             myRigidBody.velocity = new Vector2(-_currentSpeed, myRigidBody.velocity.y);
+            FlipCharacter(-.5f, .1f);
+            HandleAnimationBool(PlayerAnimationState.IsRunning, true);
+        }
         else if (Input.GetKey(KeyCode.RightArrow))
+        {
             myRigidBody.velocity = new Vector2(_currentSpeed, myRigidBody.velocity.y);
+            FlipCharacter(.5f, .1f);
+            HandleAnimationBool(PlayerAnimationState.IsRunning, true);
+        }
+        else
+        {
+            HandleAnimationBool(PlayerAnimationState.IsRunning, false);
+        }
     }
 
     private void CheckMovenmentSpeed()
     {
-        _currentSpeed = Input.GetKeyDown(KeyCode.LeftControl) ? speedRun : speed;
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            animator.speed = 2;
+            _currentSpeed = speedRun;
+        }
+        else
+        {
+            animator.speed = 1;
+            _currentSpeed = speed;
+        }
+
+    }
+
+    private void FlipCharacter(float direction, float duration)
+    {
+        if (myRigidBody.transform.localScale.x != direction)
+        {
+            myRigidBody.transform.DOScaleX(direction, duration);
+        }
+    }
+    #endregion
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        HandleAnimationBool(PlayerAnimationState.JumpUp, false);
     }
 
     private void HandleJump()
@@ -74,37 +112,23 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             myRigidBody.velocity = Vector2.up * forceJump;
-            myRigidBody.transform.localScale = new Vector2(0.5f, 0.5f);
-            DOTween.Kill(myRigidBody.transform);
-            HandleScaleJump();
+            HandleAnimationBool(PlayerAnimationState.JumpUp, true);
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground") && _isFalling)
-            HandleLanding();
-    }
-
-
-    private void HandleScaleJump()
-    {
-        HandleAnimation(jumpScaleX, jumpScaleY, animationDuration);
-    }
-
-    private void HandleLanding()
-    {
-        HandleAnimation(landingScaleX, landingScaleY, animationDuration / 2);
-    }
-
-    private void HandleAnimation(float valueX, float valueY, float duration)
-    {
-        myRigidBody.transform.DOScaleY(valueY, duration).SetLoops(numberOfLoops, loopType);
-        myRigidBody.transform.DOScaleX(valueX, duration).SetLoops(numberOfLoops, loopType);
-    }
-
 
     private void CheckIfIsFalling()
     {
         _isFalling = myRigidBody.velocity.y < _fallingThreshold;
+        if (_isFalling)
+        {
+            HandleAnimationBool(PlayerAnimationState.JumpUp, false);
+        }
     }
+
+    private void HandleAnimationBool(PlayerAnimationState state, bool flag)
+    {
+        animator.SetBool(state.ToString(), flag);
+    }
+
+
 }
