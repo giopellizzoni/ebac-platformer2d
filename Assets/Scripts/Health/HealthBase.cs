@@ -7,15 +7,21 @@ public class HealthBase : MonoBehaviour
     public int startLife = 10;
     public bool destroyOnKill = false;
 
-    public float delayToKill = 0f; 
+    public float delayToKill = 0f;
 
     private int _currentLife;
     private bool _isDead;
+
+    public FlashColor flashColor;
 
 
     private void Awake()
     {
         Init();
+        if (flashColor == null)
+        {
+            flashColor = GetComponent<FlashColor>();
+        }
     }
 
     private void Init()
@@ -26,17 +32,20 @@ public class HealthBase : MonoBehaviour
 
     public void Damage(int damage)
     {
-        if (_isDead) return;    
+        if (_isDead) return;
         _currentLife -= damage;
 
-        if (_currentLife < 0 )
+        if (_currentLife < 0)
             Kill();
+
+        if(flashColor != null) 
+            flashColor.Flash();
     }
 
     private void Kill()
     {
         _isDead = true;
-        if(destroyOnKill)
+        if (destroyOnKill)
             Destroy(gameObject, delayToKill);
     }
 }
