@@ -62,13 +62,13 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             myRigidBody.velocity = new Vector2(-_currentSpeed, myRigidBody.velocity.y);
-            FlipCharacter(-.5f, .1f);
+            FlipCharacter(-1f, .1f);
             HandleAnimationBool(PlayerAnimationState.IsRunning, true);
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             myRigidBody.velocity = new Vector2(_currentSpeed, myRigidBody.velocity.y);
-            FlipCharacter(.5f, .1f);
+            FlipCharacter(1f, .1f);
             HandleAnimationBool(PlayerAnimationState.IsRunning, true);
         }
         else
