@@ -6,9 +6,7 @@ using UnityEngine;
 
 public class ItemManager : Singleton<ItemManager>
 {
-    public int coins;
-
-    public TMP_Text textMesh;
+    public SOInt coins;
 
     private void Start()
     {
@@ -17,15 +15,18 @@ public class ItemManager : Singleton<ItemManager>
 
     private void Reset()
     {
-        coins = 0;
-        AddCoins(0);
+        coins.value = 0;
+        UpdateUI();
     }
 
     public void AddCoins(int amount = 1)
     {
+        coins.value += amount;
+        UpdateUI();
+    }
 
-        coins += amount;
-        textMesh.SetText($"x {coins.ToString()}");
+    public void UpdateUI() {
+        //UIInGameManager.Instance.UpdateTextCoints($"x {coins.value}");
     }
 
 }
