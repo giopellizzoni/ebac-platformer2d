@@ -22,13 +22,11 @@ public class Player : MonoBehaviour
     [Header("Setup")]
     public SOPlayerSetup soPlayerSetup;
 
-    public Animator animator;
-
     private float _currentSpeed;
     private float _fallingThreshold = -5.0f;
     private bool _isFalling = false;
 
-
+    private Animator _currentPlayer;
     
 
     private void Awake()
@@ -37,12 +35,14 @@ public class Player : MonoBehaviour
         {
             healthBase.OnKill += OnPlayerKill;
         }
+
+        _currentPlayer = Instantiate(soPlayerSetup.player, transform);
     }
 
     private void OnPlayerKill()
     {
         healthBase.OnKill -= OnPlayerKill;
-        animator.SetTrigger(soPlayerSetup.triggerDeath);
+        _currentPlayer.SetTrigger(soPlayerSetup.triggerDeath);
     }
 
     // Update is called once per frame
@@ -94,12 +94,12 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftControl))
         {
-            animator.speed = 2;
+            _currentPlayer.speed = 2;
             _currentSpeed = soPlayerSetup.speedRun;
         }
         else
         {
-            animator.speed = 1;
+            _currentPlayer.speed = 1;
             _currentSpeed = soPlayerSetup.speed;
         }
 
@@ -150,7 +150,7 @@ public class Player : MonoBehaviour
 
     private void HandleAnimation(PlayerAnimationState state, bool flag)
     {
-        animator.SetBool(state.ToString(), flag);
+        _currentPlayer.SetBool(state.ToString(), flag);
     }
 
     public void DestroyMe() 
