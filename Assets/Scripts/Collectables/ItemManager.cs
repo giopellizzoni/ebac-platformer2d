@@ -7,6 +7,7 @@ using UnityEngine;
 public class ItemManager : Singleton<ItemManager>
 {
     public SOInt coins;
+    public SOInt gems;
 
     private void Start()
     {
@@ -16,17 +17,16 @@ public class ItemManager : Singleton<ItemManager>
     private void Reset()
     {
         coins.value = 0;
-        UpdateUI();
+        gems.value = 0;
     }
 
     public void AddCoins(int amount = 1)
     {
         coins.value += amount;
-        UpdateUI();
     }
 
-    public void UpdateUI() {
-        //UIInGameManager.Instance.UpdateTextCoints($"x {coins.value}");
+    public void AddGems(int amount = 1)
+    {
+        gems.value += amount;
     }
-
 }
