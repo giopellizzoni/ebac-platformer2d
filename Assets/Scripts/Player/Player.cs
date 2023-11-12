@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using System;
-
+using System.Runtime.CompilerServices;
 
 public enum PlayerAnimationState
 {
     JumpUp,
     JumpDown,
-    IsRunning, 
+    IsRunning,
     Landing
 }
 
 public class Player : MonoBehaviour
 {
+
+    public HealthBase healthBase;
     public Rigidbody2D myRigidBody;
 
     [Header("Speed setup")]
@@ -23,14 +25,40 @@ public class Player : MonoBehaviour
     public float speedRun;
     public float forceJump = 2;
 
+    [Header("Animation Setup")]
+    public float jumpScaleY = 1.5f;
+    public float jumpScaleX = 0.7f;
+    public float animationDuration = .3f;
+    public Ease ease = Ease.OutBack;
+
+
     [Header("Animation Player")]
     public string boolRun = "IsRunning";
+    public string triggerDeath = "Death";
+    
 
     public Animator animator;
 
     private float _currentSpeed;
     private float _fallingThreshold = -5.0f;
     private bool _isFalling = false;
+
+
+    
+
+    private void Awake()
+    {
+        if (healthBase != null)
+        {
+            healthBase.OnKill += OnPlayerKill;
+        }
+    }
+
+    private void OnPlayerKill()
+    {
+        healthBase.OnKill -= OnPlayerKill;
+        animator.SetTrigger(triggerDeath);
+    }
 
     // Update is called once per frame
     void Update()
@@ -62,13 +90,13 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             myRigidBody.velocity = new Vector2(-_currentSpeed, myRigidBody.velocity.y);
-            FlipCharacter(-.5f, .1f);
+            FlipCharacter(-1f, .1f);
             HandleAnimationBool(PlayerAnimationState.IsRunning, true);
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             myRigidBody.velocity = new Vector2(_currentSpeed, myRigidBody.velocity.y);
-            FlipCharacter(.5f, .1f);
+            FlipCharacter(1f, .1f);
             HandleAnimationBool(PlayerAnimationState.IsRunning, true);
         }
         else
@@ -130,5 +158,10 @@ public class Player : MonoBehaviour
         animator.SetBool(state.ToString(), flag);
     }
 
+
+    public void DestroyMe() 
+    {
+        Destroy(gameObject);
+    }
 
 }
