@@ -6311,7 +6311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coins: {fileID: 11400000, guid: e1a2d1b4a3483914a8a165a2deb65d72, type: 2}
-  gems: {fileID: 0}
+  gems: {fileID: 11400000, guid: 814314c3be3e3404f8ee0a0ca181cb5d, type: 2}
 --- !u!4 &1699884544
 Transform:
   m_ObjectHideFlags: 0
