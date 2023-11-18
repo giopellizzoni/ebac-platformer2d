@@ -648,6 +648,14 @@ PrefabInstance:
       propertyPath: CollisionModule.m_Planes.Array.data[0]
       value: 
       objectReference: {fileID: 1216257642}
+    - target: {fileID: 3736632942414098514, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+      propertyPath: CollisionModule.type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3736632942414098514, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1216257642}
     - target: {fileID: 8330780102310860871, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -699,6 +707,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8403536250790733585, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+    - {fileID: 3397931042042037755, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
@@ -868,6 +877,10 @@ PrefabInstance:
       propertyPath: CollisionModule.m_Planes.Array.data[0]
       value: 
       objectReference: {fileID: 1216257642}
+    - target: {fileID: 3736632942414098514, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1216257642}
     - target: {fileID: 8330780102310860871, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -919,6 +932,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8403536250790733585, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+    - {fileID: 3397931042042037755, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
@@ -1279,6 +1293,10 @@ PrefabInstance:
       propertyPath: CollisionModule.m_Planes.Array.data[0]
       value: 
       objectReference: {fileID: 1216257642}
+    - target: {fileID: 3736632942414098514, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1216257642}
     - target: {fileID: 8330780102310860871, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -1330,6 +1348,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8403536250790733585, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+    - {fileID: 3397931042042037755, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
@@ -1628,6 +1647,10 @@ PrefabInstance:
       propertyPath: CollisionModule.m_Planes.Array.data[0]
       value: 
       objectReference: {fileID: 1216257642}
+    - target: {fileID: 3736632942414098514, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1216257642}
     - target: {fileID: 8330780102310860871, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -1679,6 +1702,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8403536250790733585, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+    - {fileID: 3397931042042037755, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
@@ -3290,6 +3314,10 @@ PrefabInstance:
       propertyPath: CollisionModule.m_Planes.Array.data[0]
       value: 
       objectReference: {fileID: 1216257642}
+    - target: {fileID: 3736632942414098514, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1216257642}
     - target: {fileID: 8330780102310860871, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -3341,6 +3369,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8403536250790733585, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+    - {fileID: 3397931042042037755, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
@@ -3982,11 +4011,6 @@ MonoBehaviour:
   destroyOnKill: 1
   delayToKill: 1
   _flashColor: {fileID: 1874633270}
---- !u!4 &1121582496 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8643378423463574384, guid: 5aefdd16fae57f740bb5f9836c83a818, type: 3}
-  m_PrefabInstance: {fileID: 182657499308975251}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1130222496
 GameObject:
   m_ObjectHideFlags: 0
@@ -5014,6 +5038,10 @@ PrefabInstance:
       propertyPath: CollisionModule.m_Planes.Array.data[0]
       value: 
       objectReference: {fileID: 1216257642}
+    - target: {fileID: 3736632942414098514, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1216257642}
     - target: {fileID: 8330780102310860871, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -5065,6 +5093,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8403536250790733585, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+    - {fileID: 3397931042042037755, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
@@ -5128,6 +5157,10 @@ PrefabInstance:
       propertyPath: CollisionModule.m_Planes.Array.data[0]
       value: 
       objectReference: {fileID: 1216257642}
+    - target: {fileID: 3736632942414098514, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1216257642}
     - target: {fileID: 8330780102310860871, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -5179,6 +5212,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8403536250790733585, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+    - {fileID: 3397931042042037755, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
@@ -10728,6 +10762,10 @@ PrefabInstance:
       propertyPath: CollisionModule.m_Planes.Array.data[0]
       value: 
       objectReference: {fileID: 1216257642}
+    - target: {fileID: 3736632942414098514, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1216257642}
     - target: {fileID: 8330780102310860871, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -10779,6 +10817,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8403536250790733585, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+    - {fileID: 3397931042042037755, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
@@ -11019,6 +11058,10 @@ PrefabInstance:
       propertyPath: CollisionModule.m_Planes.Array.data[0]
       value: 
       objectReference: {fileID: 1216257642}
+    - target: {fileID: 3736632942414098514, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1216257642}
     - target: {fileID: 8330780102310860871, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -11070,6 +11113,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8403536250790733585, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+    - {fileID: 3397931042042037755, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
@@ -11656,7 +11700,6 @@ Transform:
   m_Children:
   - {fileID: 1068180645}
   - {fileID: 5828677704307404563}
-  - {fileID: 1121582496}
   m_Father: {fileID: 901332454}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1740070442
@@ -11677,7 +11720,6 @@ MonoBehaviour:
   collider2d: {fileID: 1740070439}
   distToGround: 0
   spaceToGround: 0.1
-  jumpVFX: {fileID: 0}
 --- !u!114 &1740070443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12408,6 +12450,10 @@ PrefabInstance:
       propertyPath: CollisionModule.m_Planes.Array.data[0]
       value: 
       objectReference: {fileID: 1216257642}
+    - target: {fileID: 3736632942414098514, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1216257642}
     - target: {fileID: 8330780102310860871, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -12416,6 +12462,10 @@ PrefabInstance:
       propertyPath: m_LayerOverridePriority
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8736402600794073857, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1216257642}
     - target: {fileID: 8910611871805273615, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.67
@@ -12459,6 +12509,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8403536250790733585, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+    - {fileID: 3397931042042037755, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
@@ -12657,6 +12708,10 @@ PrefabInstance:
       propertyPath: CollisionModule.m_Planes.Array.data[0]
       value: 
       objectReference: {fileID: 1216257642}
+    - target: {fileID: 3736632942414098514, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1216257642}
     - target: {fileID: 8330780102310860871, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -12708,6 +12763,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8403536250790733585, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+    - {fileID: 3397931042042037755, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
@@ -12716,67 +12772,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8910611871805273615, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
   m_PrefabInstance: {fileID: 2131722675}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &182657499308975251
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1740070441}
-    m_Modifications:
-    - target: {fileID: 2293857188714531433, guid: 5aefdd16fae57f740bb5f9836c83a818, type: 3}
-      propertyPath: m_Name
-      value: PFB_ParticleSystem (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2293857188714531433, guid: 5aefdd16fae57f740bb5f9836c83a818, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8643378423463574384, guid: 5aefdd16fae57f740bb5f9836c83a818, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8643378423463574384, guid: 5aefdd16fae57f740bb5f9836c83a818, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8643378423463574384, guid: 5aefdd16fae57f740bb5f9836c83a818, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8643378423463574384, guid: 5aefdd16fae57f740bb5f9836c83a818, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 8643378423463574384, guid: 5aefdd16fae57f740bb5f9836c83a818, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 8643378423463574384, guid: 5aefdd16fae57f740bb5f9836c83a818, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8643378423463574384, guid: 5aefdd16fae57f740bb5f9836c83a818, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8643378423463574384, guid: 5aefdd16fae57f740bb5f9836c83a818, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 8643378423463574384, guid: 5aefdd16fae57f740bb5f9836c83a818, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8643378423463574384, guid: 5aefdd16fae57f740bb5f9836c83a818, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5aefdd16fae57f740bb5f9836c83a818, type: 3}
 --- !u!199 &623151830899821046
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -17656,6 +17651,14 @@ PrefabInstance:
       propertyPath: CollisionModule.m_Planes.Array.data[0]
       value: 
       objectReference: {fileID: 1216257642}
+    - target: {fileID: 3736632942414098514, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1216257642}
+    - target: {fileID: 6175610734462252598, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1216257642}
     - target: {fileID: 8330780102310860871, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -17664,6 +17667,10 @@ PrefabInstance:
       propertyPath: m_LayerOverridePriority
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8736402600794073857, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1216257642}
     - target: {fileID: 8910611871805273615, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
       propertyPath: m_LocalPosition.x
       value: -34.49
@@ -17707,6 +17714,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8403536250790733585, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+    - {fileID: 265187469084285132, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
+    - {fileID: 3397931042042037755, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc22574e4120f6641be291e2f06a0801, type: 3}
