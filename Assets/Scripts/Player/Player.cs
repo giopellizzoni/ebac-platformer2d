@@ -19,31 +19,14 @@ public class Player : MonoBehaviour
     public HealthBase healthBase;
     public Rigidbody2D myRigidBody;
 
-    [Header("Speed setup")]
-    public Vector2 friction = new Vector2(.1f, 0);
-    public float speed;
-    public float speedRun;
-    public float forceJump = 2;
-
-    [Header("Animation Setup")]
-    public float jumpScaleY = 1.5f;
-    public float jumpScaleX = 0.7f;
-    public float animationDuration = .3f;
-    public Ease ease = Ease.OutBack;
-
-
-    [Header("Animation Player")]
-    public string boolRun = "IsRunning";
-    public string triggerDeath = "Death";
-    
-
-    public Animator animator;
+    [Header("Setup")]
+    public SOPlayerSetup soPlayerSetup;
 
     private float _currentSpeed;
     private float _fallingThreshold = -5.0f;
     private bool _isFalling = false;
 
-
+    private Animator _currentPlayer;
     
 
     private void Awake()
@@ -52,19 +35,22 @@ public class Player : MonoBehaviour
         {
             healthBase.OnKill += OnPlayerKill;
         }
+
+        _currentPlayer = Instantiate(soPlayerSetup.player, transform);
+        _currentPlayer.GetComponentInChildren<GunBase>().playerSideReference = transform;
     }
 
     private void OnPlayerKill()
     {
         healthBase.OnKill -= OnPlayerKill;
-        animator.SetTrigger(triggerDeath);
+        _currentPlayer.SetTrigger(soPlayerSetup.triggerDeath);
     }
 
     // Update is called once per frame
     void Update()
     {
-        HandleMovement();
         HandleJump();
+        HandleMovement();
         CheckIfIsFalling();
     }
 
@@ -80,9 +66,9 @@ public class Player : MonoBehaviour
     private void AdjustFrictionForDeceleration()
     {
         if (myRigidBody.velocity.x > 0)
-            myRigidBody.velocity -= friction;
+            myRigidBody.velocity += soPlayerSetup.friction;
         else if (myRigidBody.velocity.x < 0)
-            myRigidBody.velocity += friction;
+            myRigidBody.velocity -= soPlayerSetup.friction;
     }
 
     private void SetMovementDirection()
@@ -90,18 +76,18 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             myRigidBody.velocity = new Vector2(-_currentSpeed, myRigidBody.velocity.y);
-            FlipCharacter(-1f, .1f);
-            HandleAnimationBool(PlayerAnimationState.IsRunning, true);
+            FlipCharacter(-1f, soPlayerSetup.playerSwipeDuration);
+            HandleAnimation(PlayerAnimationState.IsRunning, true);
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             myRigidBody.velocity = new Vector2(_currentSpeed, myRigidBody.velocity.y);
-            FlipCharacter(1f, .1f);
-            HandleAnimationBool(PlayerAnimationState.IsRunning, true);
+            FlipCharacter(1f, soPlayerSetup.playerSwipeDuration);
+            HandleAnimation(PlayerAnimationState.IsRunning, true);
         }
         else
         {
-            HandleAnimationBool(PlayerAnimationState.IsRunning, false);
+            HandleAnimation(PlayerAnimationState.IsRunning, false);
         }
     }
 
@@ -109,13 +95,13 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftControl))
         {
-            animator.speed = 2;
-            _currentSpeed = speedRun;
+            _currentPlayer.speed = 2;
+            _currentSpeed = soPlayerSetup.speedRun;
         }
         else
         {
-            animator.speed = 1;
-            _currentSpeed = speed;
+            _currentPlayer.speed = 1;
+            _currentSpeed = soPlayerSetup.speed;
         }
 
     }
@@ -132,16 +118,26 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        HandleAnimationBool(PlayerAnimationState.JumpUp, false);
+        HandleAnimation(PlayerAnimationState.JumpUp, false);
     }
 
     private void HandleJump()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            myRigidBody.velocity = Vector2.up * forceJump;
-            HandleAnimationBool(PlayerAnimationState.JumpUp, true);
+            myRigidBody.velocity = Vector2.up * soPlayerSetup.forceJump;
+            myRigidBody.transform.localScale = Vector2.one;
+            DOTween.Kill(myRigidBody.transform);
+            HandleScaleJump();
+
+            HandleAnimation(PlayerAnimationState.JumpUp, true);
         }
+    }
+
+    private void HandleScaleJump()
+    {
+        myRigidBody.transform.DOScaleY(soPlayerSetup.jumpScaleY, soPlayerSetup.animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(soPlayerSetup.ease);
+        myRigidBody.transform.DOScaleX(soPlayerSetup.jumpScaleX, soPlayerSetup.animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(soPlayerSetup.ease);
     }
 
     private void CheckIfIsFalling()
@@ -149,15 +145,14 @@ public class Player : MonoBehaviour
         _isFalling = myRigidBody.velocity.y < _fallingThreshold;
         if (_isFalling)
         {
-            HandleAnimationBool(PlayerAnimationState.JumpUp, false);
+            HandleAnimation(PlayerAnimationState.JumpUp, false);
         }
     }
 
-    private void HandleAnimationBool(PlayerAnimationState state, bool flag)
+    private void HandleAnimation(PlayerAnimationState state, bool flag)
     {
-        animator.SetBool(state.ToString(), flag);
+        _currentPlayer.SetBool(state.ToString(), flag);
     }
-
 
     public void DestroyMe() 
     {

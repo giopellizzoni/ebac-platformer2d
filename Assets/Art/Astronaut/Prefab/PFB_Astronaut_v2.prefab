@@ -417,7 +417,7 @@ MonoBehaviour:
   projectileBase: {fileID: 2971055225236038224, guid: c5c2348c814a5f04da5cf2d78ef02a55, type: 3}
   positionToShoot: {fileID: 8471624724156750980}
   timeBetweenShoot: 0.1
-  playerSideReference: {fileID: 8007466312498025151}
+  playerSideReference: {fileID: 0}
 --- !u!1 &4638734327190524125
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,7 +986,7 @@ GameObject:
   - component: {fileID: 6234882111845432731}
   - component: {fileID: 8907010816606464142}
   m_Layer: 0
-  m_Name: PFB_Astronaut
+  m_Name: PFB_Astronaut_v2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
