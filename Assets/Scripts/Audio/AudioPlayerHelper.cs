@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AudioPlayerHelper : MonoBehaviour
 {
-    public KeyCode keycode = KeyCode.P;
+    public KeyCode keycode = KeyCode.Space;
     public AudioSource audioSource;
 
     // Update is called once per frame

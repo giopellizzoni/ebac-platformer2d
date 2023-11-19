@@ -33,7 +33,6 @@ public class Player : MonoBehaviour
     public float distToGround;
     public float spaceToGround = .1f;
 
-
     private void Awake()
     {
         if (healthBase != null)
