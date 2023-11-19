@@ -188,4 +188,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ecdca674feef6540994f27aa7c76154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   compareTag: Player
+  particleSystem: {fileID: 0}
+  timeToHide: 1
+  graphicItem: {fileID: 0}
+  collider: {fileID: 4777121408717518594}

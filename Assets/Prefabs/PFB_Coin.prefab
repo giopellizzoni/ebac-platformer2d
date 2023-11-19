@@ -89,6 +89,7 @@ MonoBehaviour:
   particleSystem: {fileID: 3736632942414098514}
   timeToHide: 1.5
   graphicItem: {fileID: 5855227337896703244}
+  collider: {fileID: 8330780102310860871}
 --- !u!210 &2322759213141954849
 SortingGroup:
   m_ObjectHideFlags: 0
