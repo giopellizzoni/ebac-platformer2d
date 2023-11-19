@@ -953,6 +953,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: PFB_Button_Light
       objectReference: {fileID: 0}
+    - target: {fileID: 2320195756785238038, guid: c242c1eb1f1350341b47e4c46195fe4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320195756785238038, guid: c242c1eb1f1350341b47e4c46195fe4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320195756785238038, guid: c242c1eb1f1350341b47e4c46195fe4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 474799784}
+    - target: {fileID: 2320195756785238038, guid: c242c1eb1f1350341b47e4c46195fe4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320195756785238038, guid: c242c1eb1f1350341b47e4c46195fe4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Pause
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320195756785238038, guid: c242c1eb1f1350341b47e4c46195fe4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320195756785238038, guid: c242c1eb1f1350341b47e4c46195fe4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320195756785238038, guid: c242c1eb1f1350341b47e4c46195fe4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5494798220982233345, guid: c242c1eb1f1350341b47e4c46195fe4d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3824,6 +3856,34 @@ PrefabInstance:
     - target: {fileID: 1899680284558197517, guid: c242c1eb1f1350341b47e4c46195fe4d, type: 3}
       propertyPath: m_Name
       value: PFB_Button_Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320195756785238038, guid: c242c1eb1f1350341b47e4c46195fe4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320195756785238038, guid: c242c1eb1f1350341b47e4c46195fe4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320195756785238038, guid: c242c1eb1f1350341b47e4c46195fe4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 474799784}
+    - target: {fileID: 2320195756785238038, guid: c242c1eb1f1350341b47e4c46195fe4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320195756785238038, guid: c242c1eb1f1350341b47e4c46195fe4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Resume
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320195756785238038, guid: c242c1eb1f1350341b47e4c46195fe4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320195756785238038, guid: c242c1eb1f1350341b47e4c46195fe4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5494798220982233345, guid: c242c1eb1f1350341b47e4c46195fe4d, type: 3}
       propertyPath: m_Pivot.x
