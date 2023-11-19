@@ -4971,11 +4971,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8007466312498025151, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
   m_PrefabInstance: {fileID: 1068180644}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &1068180646 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 4820366162525023672, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
-  m_PrefabInstance: {fileID: 1068180644}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1071128944 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5554472252226189067, guid: d0fe02c1da93aaf4cab4b88dfcc9559d, type: 3}
@@ -13803,7 +13798,6 @@ MonoBehaviour:
   collider2d: {fileID: 1740070439}
   distToGround: 0
   spaceToGround: 0.1
-  jumpAudio: {fileID: 1068180646}
 --- !u!114 &1740070443
 MonoBehaviour:
   m_ObjectHideFlags: 0
