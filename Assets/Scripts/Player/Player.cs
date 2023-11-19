@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
 
         _currentPlayer = Instantiate(soPlayerSetup.player, transform);
         _currentPlayer.GetComponentInChildren<GunBase>().playerSideReference = transform;
+        _currentPlayer.GetComponent<PlayerDestroyHelper>().player = this;
 
         if (collider2d != null)
         {

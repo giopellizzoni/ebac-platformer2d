@@ -5,6 +5,9 @@ using UnityEngine;
 public class ItemCollectableBase : MonoBehaviour
 {
 
+    [Header("Sounds")]
+    public AudioSource audioSource;
+
     public string compareTag = "Player";
     public ParticleSystem particleSystem;
     public float timeToHide = 3;
@@ -33,9 +36,8 @@ public class ItemCollectableBase : MonoBehaviour
 
     protected virtual void OnCollect() 
     {
-        if(particleSystem != null)
-        {
-            particleSystem.Play();
-        }
+        if(particleSystem != null) particleSystem.Play();
+
+        if (audioSource != null) audioSource.Play();
     }
 }
