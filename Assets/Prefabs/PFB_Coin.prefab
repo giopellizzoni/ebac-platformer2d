@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5113759408564003375}
-  - {fileID: 8866286279941997942}
+  - {fileID: 5106195168021193208}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &8330780102310860871
@@ -84,8 +84,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   compareTag: Player
-  particleSystem: {fileID: 1012349818698831068}
-  timeToHide: 3
+  particleSystem: {fileID: 3736632942414098514}
+  timeToHide: 1.5
   graphicItem: {fileID: 5855227337896703244}
 --- !u!210 &2322759213141954849
 SortingGroup:
@@ -183,7 +183,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &4908059770806431744
+--- !u!1001 &8776204288967414926
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -193,7 +193,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3495837751225521937, guid: aee41804f83b3da498f6490feea602a3, type: 3}
       propertyPath: m_Name
-      value: PFB_ParticleSystem
+      value: PFB_ParticleSystem_Coin
       objectReference: {fileID: 0}
     - target: {fileID: 4546258749678007670, guid: aee41804f83b3da498f6490feea602a3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -236,21 +236,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5336898119994238172, guid: aee41804f83b3da498f6490feea602a3, type: 3}
-      propertyPath: lengthInSec
-      value: 3
+      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aee41804f83b3da498f6490feea602a3, type: 3}
---- !u!198 &1012349818698831068 stripped
+--- !u!198 &3736632942414098514 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 5336898119994238172, guid: aee41804f83b3da498f6490feea602a3, type: 3}
-  m_PrefabInstance: {fileID: 4908059770806431744}
+  m_PrefabInstance: {fileID: 8776204288967414926}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &8866286279941997942 stripped
+--- !u!4 &5106195168021193208 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4546258749678007670, guid: aee41804f83b3da498f6490feea602a3, type: 3}
-  m_PrefabInstance: {fileID: 4908059770806431744}
+  m_PrefabInstance: {fileID: 8776204288967414926}
   m_PrefabAsset: {fileID: 0}

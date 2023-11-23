@@ -27,7 +27,12 @@ public class Player : MonoBehaviour
     private bool _isFalling = false;
 
     private Animator _currentPlayer;
-    
+
+    [Header("Jump Collision Check")]
+    public Collider2D collider2d;
+    public float distToGround;
+    public float spaceToGround = .1f;
+
 
     private void Awake()
     {
@@ -38,7 +43,18 @@ public class Player : MonoBehaviour
 
         _currentPlayer = Instantiate(soPlayerSetup.player, transform);
         _currentPlayer.GetComponentInChildren<GunBase>().playerSideReference = transform;
+
+        if (collider2d != null)
+        {
+            distToGround = collider2d.bounds.extents.y;
+        }
     }
+
+    private bool IsGrounded()
+    {
+        return Physics2D.Raycast(transform.position, -Vector2.up, distToGround + spaceToGround);
+    }
+
 
     private void OnPlayerKill()
     {
@@ -49,6 +65,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        IsGrounded();
         HandleJump();
         HandleMovement();
         CheckIfIsFalling();
@@ -123,7 +140,7 @@ public class Player : MonoBehaviour
 
     private void HandleJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             myRigidBody.velocity = Vector2.up * soPlayerSetup.forceJump;
             myRigidBody.transform.localScale = Vector2.one;
@@ -131,7 +148,13 @@ public class Player : MonoBehaviour
             HandleScaleJump();
 
             HandleAnimation(PlayerAnimationState.JumpUp, true);
+            PlayJumpVFX();
         }
+    }
+
+    private void PlayJumpVFX()
+    {
+        VFXManager.Instance.PlayVFXByType(VFXManager.VFXType.Jump, transform.position);
     }
 
     private void HandleScaleJump()
@@ -154,7 +177,7 @@ public class Player : MonoBehaviour
         _currentPlayer.SetBool(state.ToString(), flag);
     }
 
-    public void DestroyMe() 
+    public void DestroyMe()
     {
         Destroy(gameObject);
     }
