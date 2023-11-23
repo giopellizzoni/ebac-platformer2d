@@ -33,7 +33,6 @@ public class Player : MonoBehaviour
     public float distToGround;
     public float spaceToGround = .1f;
 
-
     private void Awake()
     {
         if (healthBase != null)
@@ -43,6 +42,7 @@ public class Player : MonoBehaviour
 
         _currentPlayer = Instantiate(soPlayerSetup.player, transform);
         _currentPlayer.GetComponentInChildren<GunBase>().playerSideReference = transform;
+        _currentPlayer.GetComponent<PlayerDestroyHelper>().player = this;
 
         if (collider2d != null)
         {
